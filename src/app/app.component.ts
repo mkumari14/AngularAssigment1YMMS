@@ -1,10 +1,23 @@
 import { Component } from '@angular/core';
-
+import { DialogsService } from './dialogs/dialogs.service';
+// @Component({
+//   selector: 'app-root',
+//   templateUrl: './app.component.html',
+//   styleUrls: ['./app.component.css']
+// })
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'material-app',// need to check with sir, why we are using custom selector instaed of app-root?
+  templateUrl: 'app.component.html'
 })
 export class AppComponent {
+  public result:any;
   title = 'assignment1YMMS';
+
+  constructor(private dialogsService: DialogsService) { }
+
+  public openDialog() {
+    this.dialogsService
+      .confirm('Confirm Dialog', 'Are you sure you want to do this?'+this.title+'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh')
+      .subscribe((res: any) => this.result = res);
+  }
 }
