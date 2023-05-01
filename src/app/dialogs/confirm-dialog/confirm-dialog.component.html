@@ -10,14 +10,60 @@
   <div style="margin: 30px; text-align: center; font-size: 20px; font-weight: 900;">Shop Tires</div>
 
   <div style="display: flex; flex-direction: row; justify-content: space-between; " [ngStyle]="{'display':buttonclicked == true ? 'none' : 'flex' }" >
-      <button mat-button color="primary" (click)="getPromoStyles()">Vehicle</button>
+      <button mat-button color="primary" (click)="getVehiclesData()">Vehicle</button>
       <button mat-button color="primary">Size</button>
       <!-- <button (click)="Todo()">Vehicle</button>
       <button>Size</button> -->
   </div>
   <div  *ngIf="buttonclicked" style="margin: 30px; text-align: center; font-size: 12px; font-weight: 100;">Select year</div>
+  <mat-tab-group #tabGroup *ngIf="buttonclicked" >
+    <mat-tab label="Year" #tab [disabled]='!year'>
+      <button (click)="onTabClick('year')">
+      <div *ngIf="year">Year</div>
+      <!-- <ul *ngIf="(yearsData$ | async).length">
+        <li *ngFor="let item of yearsData$ | async">
+          {{item}}
+        </li>
+      </ul> -->
+      <ul *ngIf="(yearsData$ | async).length">
+        <li *ngFor="let item of yearsData$ | async">
+          {{item.id}}
+        </li>
+      </ul>
+      </button>
+    </mat-tab>
+    <mat-tab label="Make" #tab [disabled]='!make'>
+      <button (click)="onTabClick('make')">
+        <div *ngIf="make">Make</div>
+        <!-- <ul *ngIf="(makesData$ | async).length">
+        <li *ngFor="let item of makesData$ | async">
+          {{item}}
+        </li>
+      </ul> -->
+      </button>
+    </mat-tab>
+    <mat-tab label="Model" #tab [disabled]='!model'>
+      <button (click)="onTabClick('model')">
+        <div *ngIf="model">Model</div>
+        <!-- <ul *ngIf="(modelsData$ | async).length">
+        <li *ngFor="let item of modelsData$ | async">
+          {{item}}
+        </li>
+      </ul> -->
+      </button>
+    </mat-tab>
+    <mat-tab label="Style" #tab [disabled]='!style'>
+      <button (click)="onTabClick('style')">
+        <div *ngIf="style">Style</div>
+        <!-- <ul *ngIf="(stylesData$ | async).length">
+        <li *ngFor="let item of stylesData$ | async">
+          {{item}}
+        </li>
+      </ul> -->
+      </button> </mat-tab>
+  </mat-tab-group>
 
-  <div class="container"  *ngIf="buttonclicked">
+  <!-- <div class="container"  *ngIf="buttonclicked">
     <select>
       <option >Select Year</option>
       <option >
@@ -42,18 +88,12 @@
          trim
       </option>
     </select>
-  </div>
+  </div> -->
 
 </div>
 
 
 
-<mat-tab-group #tabGroup >
-  <mat-tab label="Year" #tab [disabled]='!year'><button (click)="onTabClick('year')"><div *ngIf="year">Year</div></button> </mat-tab>
-  <mat-tab label="Make" #tab [disabled]='!make'><button (click)="onTabClick('make')"><div *ngIf="make">Make</div></button> </mat-tab>
-  <mat-tab label="Model" #tab [disabled]='!model'><button (click)="onTabClick('model')"><div *ngIf="model">Model</div></button> </mat-tab>
-  <mat-tab label="Style" #tab [disabled]='!style'><button (click)="onTabClick('style')"><div *ngIf="style">Style</div></button> </mat-tab>
-</mat-tab-group>
 
 
 
