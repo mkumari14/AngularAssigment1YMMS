@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class VehiclesService {
@@ -42,11 +43,11 @@ export class VehiclesService {
 //   }
 
 BASE_URL = `https://6080be3273292b0017cdbf2a.mockapi.io`
-
-getData(urlInput:any):Observable<any>{
+getData(urlInput:any):Observable<[]>{
   console.log("userInput", urlInput)
-  //return this.http.get(`${this.BASE_URL}/${urlInput}`)
-  return this.http.get(`https://jsonplaceholder.typicode.com/posts`)
+  return this.http.get(`${this.BASE_URL}/${urlInput ==='trim'? 'trim' : (urlInput+'s')}`).pipe(
+    map((res: { [x: string]: any; })=>res[urlInput])
+  )
 }
 
 

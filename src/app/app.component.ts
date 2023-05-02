@@ -12,12 +12,8 @@ import { DialogsService } from './dialogs/dialogs.service';
 export class AppComponent {
   public result:any;
   title = 'assignment1YMMS';
-
   constructor(private dialogsService: DialogsService) { }
-
   public openDialog() {
-    this.dialogsService
-      .confirm('Confirm Dialog', 'Are you sure you want to do this?'+this.title+'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh')
-      .subscribe((res: any) => this.result = res);
+    this.dialogsService.openModal();
   }
 }

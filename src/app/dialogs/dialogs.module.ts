@@ -6,6 +6,8 @@ import { MatButtonModule } from '@angular/material/button';
 import {  MatDialogModule } from '@angular/material/dialog';
 import { MatTabsModule } from '@angular/material/tabs';
 import {HttpClientModule} from '@angular/common/http';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   imports: [
@@ -13,7 +15,9 @@ import {HttpClientModule} from '@angular/common/http';
     MatDialogModule,
     MatButtonModule,
     MatTabsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatGridListModule,
+    ScrollingModule
 
   ],
   declarations: [ConfirmDialogComponent],
